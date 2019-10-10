@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source Files\common">
+      <UniqueIdentifier>{69b77c4a-86b6-4044-89e7-82f8de02ea5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core">
+      <UniqueIdentifier>{bf6f11ff-2890-4264-baeb-34a68b5fadb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\common">
+      <UniqueIdentifier>{8d48294c-b78e-4013-884a-5f89a8d54f78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core">
+      <UniqueIdentifier>{4b965fde-9848-4308-83f1-3907067029d9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="common\ecds_list.c">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ecds_memory_manager.c">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ecds_module_manager.c">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ecds_core.c">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ecds_class_handler.c">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="common\ecds_log.c">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ecds_launcher.c">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="core\ecds_class_handler.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\ecds_core.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\ecds_dispatcher.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="common\ecds_event.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\ecds_list.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\ecds_log.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="core\ecds_memory_manager.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="common\ecds_module.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\ecds_object.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\ecds_process.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\ecds_queue.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\ecds_service.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="ecds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

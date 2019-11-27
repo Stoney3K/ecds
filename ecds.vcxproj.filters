@@ -13,81 +13,96 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
-    <Filter Include="Source Files\common">
-      <UniqueIdentifier>{69b77c4a-86b6-4044-89e7-82f8de02ea5b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\core">
-      <UniqueIdentifier>{bf6f11ff-2890-4264-baeb-34a68b5fadb3}</UniqueIdentifier>
+    <Filter Include="Header Files\core">
+      <UniqueIdentifier>{f4c2aa06-d879-4355-b330-d397cc6b3fb0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\common">
-      <UniqueIdentifier>{8d48294c-b78e-4013-884a-5f89a8d54f78}</UniqueIdentifier>
+      <UniqueIdentifier>{19f2249c-b8b6-485e-ba2b-ca3043fa90ea}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\core">
-      <UniqueIdentifier>{4b965fde-9848-4308-83f1-3907067029d9}</UniqueIdentifier>
+    <Filter Include="Source Files\core">
+      <UniqueIdentifier>{508ba60a-d911-4c13-b916-0e7169e63f0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\common">
+      <UniqueIdentifier>{686cb373-73e9-44cc-a6ce-cefacc2c3f24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\modules">
+      <UniqueIdentifier>{a84c5724-7178-4ab6-86c1-7d7635d08aee}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="core\ecds_launcher.c">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
     <ClCompile Include="common\ecds_list.c">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="common\ecds_log.c">
       <Filter>Source Files\common</Filter>
     </ClCompile>
     <ClCompile Include="core\ecds_memory_manager.c">
       <Filter>Source Files\core</Filter>
     </ClCompile>
-    <ClCompile Include="core\ecds_module_manager.c">
-      <Filter>Source Files\core</Filter>
-    </ClCompile>
-    <ClCompile Include="core\ecds_core.c">
-      <Filter>Source Files\core</Filter>
-    </ClCompile>
     <ClCompile Include="core\ecds_class_handler.c">
-      <Filter>Source Files\core</Filter>
+      <Filter>Header Files\core</Filter>
     </ClCompile>
-    <ClCompile Include="common\ecds_log.c">
+    <ClCompile Include="common\ecds_test_class.c">
       <Filter>Source Files\common</Filter>
     </ClCompile>
-    <ClCompile Include="core\ecds_launcher.c">
+    <ClCompile Include="common\ecds_queue.c">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ecds_dispatcher.c">
       <Filter>Source Files\core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="core\ecds_class_handler.h">
-      <Filter>Header Files\core</Filter>
+    <ClInclude Include="ecds.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="core\ecds_core.h">
+    <ClInclude Include="core\ecds_class_handler.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
     <ClInclude Include="core\ecds_dispatcher.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
-    <ClInclude Include="common\ecds_event.h">
-      <Filter>Header Files\common</Filter>
-    </ClInclude>
-    <ClInclude Include="common\ecds_list.h">
-      <Filter>Header Files\common</Filter>
-    </ClInclude>
-    <ClInclude Include="common\ecds_log.h">
-      <Filter>Header Files\common</Filter>
-    </ClInclude>
     <ClInclude Include="core\ecds_memory_manager.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
+    <ClInclude Include="core\ecds_module_manager.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="common\ecds_service.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
     <ClInclude Include="common\ecds_module.h">
-      <Filter>Header Files\common</Filter>
-    </ClInclude>
-    <ClInclude Include="common\ecds_object.h">
-      <Filter>Header Files\common</Filter>
-    </ClInclude>
-    <ClInclude Include="common\ecds_process.h">
       <Filter>Header Files\common</Filter>
     </ClInclude>
     <ClInclude Include="common\ecds_queue.h">
       <Filter>Header Files\common</Filter>
     </ClInclude>
-    <ClInclude Include="common\ecds_service.h">
+    <ClInclude Include="common\ecds_log.h">
       <Filter>Header Files\common</Filter>
     </ClInclude>
-    <ClInclude Include="ecds.h">
+    <ClInclude Include="common\ecds_list.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\ecds_event.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\ecds_version.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="core\ecds_object.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\ecds_process.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="common\ecds_test_class.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="core\ecds_list_internal.h">
+      <Filter>Header Files\core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

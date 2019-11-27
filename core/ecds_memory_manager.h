@@ -11,23 +11,26 @@
 /*																			 */
 /*****************************************************************************/
 
-#ifndef _ECDS_PROCESS_H
-#define _ECDS_PROCESS_H
+#ifndef _ECDS_MEMORY_MANAGER_H
+#define _ECDS_MEMORY_MANAGER_H
 
-#include <ecds_process.h>
-#include <ecds_list.h>
+#include <ecds.h>
+
+#include <core/ecds_process.h>
+#include <core/ecds_object.h>
+
+typedef struct _ecds_memory_manager_t ecds_memory_manager_t;
 
 //!<	Class UID of MAXINT is reserved for the memory manager.
-#define MEMORY_MANAGER 			0xFFFFFFFF
-#define MEMORY_MANAGER_ENTRY	0xFFFFFFFE
-#define ECDS_TYPE_UNMANAGED		0xFFFFFF00
-
-typedef struct _ecds_memory_manager_t * ecds_memory_manager_t;
-typedef struct _ecds_memory_entry_t * ecds_memory_entry_t;
+#define ECDS_TYPE_MEMORY_MANAGER 			0xFFFFFFFF
+#define ECDS_TYPE_MEMORY_MANAGER_ENTRY		0xFFFFFFFE
+#define ECDS_TYPE_MEMORY_MANAGER_LIST		0xFFFFFFFD
+#define ECDS_TYPE_UNMANAGED					0xFFFFFF00
 
 struct _ecds_memory_entry_t
 {
-	ecds_object_t * obj;
+	ecds_object_t obj;
+	ecds_object_t * entry;
 	uint32_t uid;
 	int refcnt;
 };
@@ -37,9 +40,9 @@ struct _ecds_memory_manager_t
 	ecds_process_t process;				//!<	The memory manager itself is a process so it can register in the scheduler.
 	
 	ecds_list_t * memory_entry_list;	//!<	List of memory entries
-}
+};
 
-extern ecds_memory_manager_t * default_memory_manager = NULL;
+typedef struct _ecds_memory_entry_t ecds_memory_entry_t;
 
 ecds_memory_manager_t * ecds_memory_manager_construct();
 
@@ -59,10 +62,18 @@ ecds_object_t * ecds_memory_manager_fetch_object(ecds_memory_manager_t * mgr, ui
 //=================================== 8< ====================================//
 //				GENERAL MEMORY MANAGEMENT FUNCTIONS FOR ECDS				 //
 //===========================================================================//
+
 /**
- * @brief Use the default memory manager to create and reference a new object.
+ * @brief Use the default memory manager to create and reference a new object without a constructor.
+ *		  For constructing registered objects with a specific class, use ecds_object_construct().
+ *
+ *		  This function is mostly used as a utility function in internal routines since it does not take
+ *		  direct care of object constructors and destructors. These are still the responsibility of the user
+ *		  creating the object.
  */
-ecds_object_t * ecds_object_new(const char * object_name, const char class_name);
+ecds_object_t * ecds_object_new(const char * name, size_t size, uint32_t type);
+
+//!< Find an object with a specific name in the memory manager's memory.
 ecds_object_t * ecds_object_find(const char * object_name);
 
 //!< Take an additional reference on an object.
@@ -74,8 +85,5 @@ void ecds_object_unref(ecds_object_t * obj);
 //============= !< This goes in ecds_property_handler.h >!===================//
 void ecds_set_property(ecds_object_t * obj, const char * property_name, void * property_value);
 void * ecds_get_property(ecds_object_t * obj, const char * property_name);
-
-//============= !< This goes in ecds_class_handler.h >!===================//
-void ecds_register_class(const char * class_name, ecds_object_t * (* construct)(), void (* dispose)(ecds_object_t * obj));
 
 #endif /* _ECDS_MEMORY_MANAGER_H */

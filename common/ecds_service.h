@@ -13,19 +13,18 @@
 #ifndef _ECDS_SERVICE_H
 #define _ECDS_SERVICE_H
 
-#include <ecds_object.h>
+#include <ecds.h>
+#include <core/ecds_dispatcher.h>
 
-typedef struct _ecds_dispatcher_t * ecds_dispatcher_t;
-typedef struct _ecds_event_t * ecds_event_t;
-typedef struct _ecds_service_t * ecds_service_t;
+#define ECDS_IS_SERVICE 0x20000000
+
+void ecds_service_dispatch_message(ecds_service_t * service, ecds_dispatcher_t * dispatcher, ecds_message_t * msg);
 
 struct _ecds_service_t
 {
-	ecds_object_t obj;
-	
-	void (* trap)(ecds_sevice_t * service, 
+	void (* dispatch)(ecds_service_t * service, 
 				  ecds_dispatcher_t * dispatcher,
-				  ecds_event_t * event);		//!<	Called when the service receives an event.
-}
+				  ecds_message_t * msg);		//!<	Called when the service receives a bus message.
+};
 
 #endif /* _ECDS_SERVICE_H */

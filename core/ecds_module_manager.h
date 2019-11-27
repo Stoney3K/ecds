@@ -13,20 +13,20 @@
 #ifndef _ECDS_MODULE_MANAGER_H
 #define _ECDS_MODULE_MANAGER_H
 
-#include <ecds_object.h>
-#include <ecds_list.h>
+#include <ecds.h>
+#include <core/ecds_object.h>
 
 typedef struct _ecds_module_t * ecds_module_t;
 typedef struct _ecds_module_manager_t * ecds_module_manager_t;
 
 typedef enum
 {
-	EMS_INVALID = -1;
-	EMS_INIT = 0;		//!<	Module entry is created but nothing attached yet
-	EMS_LOADED = 1;		//!<	Module is loaded (library file detected)
-	EMS_REGISTERED = 2;	//!<	Module is registered in memory
-	EMS_UNLOAD = 3;		//!<	Module is flagged for unload
-	EMS_ERROR = 255;	//!<	Module loading failed
+	EMS_INVALID = -1,
+	EMS_INIT = 0,		//!<	Module entry is created but nothing attached yet
+	EMS_LOADED = 1,		//!<	Module is loaded (library file detected)
+	EMS_REGISTERED = 2,	//!<	Module is registered in memory
+	EMS_UNLOAD = 3,		//!<	Module is flagged for unload
+	EMS_ERROR = 255		//!<	Module loading failed
 } ecds_module_status_t;
 
 /**
@@ -37,14 +37,14 @@ struct _ecds_module_entry_t
 	ecds_module_t * module;
 	char * path;
 	int status;
-}
+};
 
 struct _ecds_module_manager_t
 {
 	ecds_object_t obj;
 	
 	ecds_list_t * module_list;	//!<	List of registered modules
-}
+};
 
 /**
  * @brief Creates the default instance for the module manager.
@@ -57,14 +57,14 @@ void ecds_module_manager_create_default();
 ecds_module_manager_t * ecds_module_manager_get_default();
 
 /**
- * @brief Loads a module from disk and registers it.
+ *	@brief Register a new module in a module manager.
  */
-void ecds_load_module(const char * path);
+void ecds_module_manager_register_module(ecds_module_manager_t * manager, ecds_module_t * module);
 
 /**
- * @brief Loads all modules in a single directory to register them.
- */
-void ecds_enumerate_modules(const char * path);
+*	@brief Unregister an existing module from the module manager.
+*/
+void ecds_module_manager_unregister_module(ecds_module_manager_t * manager, ecds_module_t * module);
 
 
 #endif /* _ECDS_PROCESS_H */

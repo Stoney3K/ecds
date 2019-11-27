@@ -3,16 +3,13 @@
 /*																			 */
 /*****************************************************************************/
 
-#ifndef _ECDS_OBJECT_H
-#define _ECDS_OBJECT_H
+#ifndef _ECDS_PROCESS_H
+#define _ECDS_PROCESS_H
 
-#include <common/ecds-object.h>
+#include <ecds.h>
+#include <core/ecds_object.h>
 
-#define ECDS_PROCESS(o)((o) == NULL) ? NULL : & (ecds_process_t *)(o))
-
-typedef struct _ecds_process_h ecds_process_h;
-
-struct _ecds_process_h {
+struct _ecds_process_t {
 	ecds_object_t obj;
 			
 	//!< Called when the process is first started up.
@@ -23,6 +20,6 @@ struct _ecds_process_h {
 	
 	//!< Called when the process manager is about to dispose.
 	void (* shutdown)(ecds_process_t * proc);
-}
+};
 
 #endif /* _ECDS_PROCESS_H */

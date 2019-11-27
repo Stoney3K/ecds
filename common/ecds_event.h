@@ -14,7 +14,7 @@
 #ifndef _ECDS_EVENT_H
 #define _ECDS_EVENT_H
 
-#include <ecds_object.h>
+#include <common/ecds_object.h>
 
 #define EVENT(e) ((ecds_event_t *)e)
 

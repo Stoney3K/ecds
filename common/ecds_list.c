@@ -9,36 +9,20 @@
 /*																			 */
 /*****************************************************************************/
 
-#include <ecds_common/ecds_list.h>
-#inckude <ecds_common/ecds_memory_manager.h>
+#include <common/ecds_list.h>
+#include <core/ecds_list_internal.h>
 
-struct _ecds_list_item_t
+#include <memory.h>
+
+void _ecds_list_reorder(ecds_list_t * list)
 {
-	ecds_object_t * data;			//!<	Pointer to actual data
-	
-	ecds_list_t * list;				//!<	Pointer to list object owning this item (NULL if orphaned)
-	
-	int index;						//!<	The index (sequence number) of the object in the list.
-	ecds_list_item_t * previous;	//!<	Pointer to previous item in list (NULL if first item)
-	ecds_list_item_t * next;		//!<	Pointer to next item in list (NULL if last item)
+	/* Stub. This function will iterate through all items in the list and update their sequence number. */
+	return;
 }
-
-struct _ecds_list_t
-{
-	ecds_object_t obj;
-	
-	uint32_t count;
-	
-	ecds_list_item_t * first;
-	ecds_list_item_t * last;
-	
-	ecds_object_t ** list_array;
-}
-
 
 ecds_list_t * ecds_list_new()
 {
-	return ecds_object_new(NULL, "ecds-list");
+	return (ecds_list_t *)ecds_object_new("ecds-list", sizeof(ecds_list_t), ECDS_TYPE_LIST);
 }
 
 void ecds_list_initialize(ecds_list_t * list)
@@ -59,8 +43,40 @@ void ecds_list_dispose(ecds_list_t * list)
 	
 	for(iter = list->last; iter; iter=iter->previous)
 	{
-		ecds_list_dispose_item(list, iter);
+		ecds_list_dispose_item(iter);
 	}
+}
+
+ecds_list_item_t * ecds_list_first_item(ecds_list_t * list)
+{
+	if (list)
+		return list->first;
+	else
+		return 0;
+}
+
+ecds_list_item_t * ecds_list_last_item(ecds_list_t * list)
+{
+	if (list)
+		return list->last;
+	else
+		return 0;
+}
+
+ecds_list_item_t * ecds_list_next_item(ecds_list_item_t * item)
+{
+	if (item)
+		return item->next;
+	else
+		return 0;
+}
+
+ecds_list_item_t * ecds_list_previous_item(ecds_list_item_t * item)
+{
+	if (item)
+		return item->previous;
+	else
+		return 0;
 }
 
 ecds_list_item_t * ecds_list_add_item(ecds_list_t * list, ecds_object_t * obj)
@@ -91,14 +107,29 @@ ecds_list_item_t * ecds_list_take_item(ecds_list_t * list, ecds_list_item_t * it
 	
 	item->list = list;
 	item->previous = list->last;
+	
 	if(list->last)
 		list->last->next = item;
+	
+	if (!list->first)
+		list->first = item;
 	
 	list->last = item;
 	
 	_ecds_list_reorder(list);
 	
 	return item;
+}
+
+ecds_object_t * ecds_list_get_item(ecds_list_t * list, ecds_list_item_t * item)
+{
+	if (!list || !item)
+		return NULL;
+	if (item->list != list)
+		/* Item does not belong to our list */
+		return NULL;
+
+	return item->data;
 }
 
 ecds_list_item_t * ecds_list_drop_item(ecds_list_item_t * item)

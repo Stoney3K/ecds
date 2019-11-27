@@ -11,24 +11,18 @@
 #ifndef _ECDS_QUEUE_H
 #define _ECDS_QUEUE_H
 
-#include <ecds_list.h>
+#include <ecds.h>
+#include <common/ecds_list.h>
 
-typedef struct _ecds_queue_t * ecds_queue_t;
-
-struct _ecds_queue_t
-{
-	ecds_list_t list;
-}
+typedef struct _ecds_queue_t ecds_queue_t;
 
 ecds_queue_t * ecds_queue_new();
 
 void ecds_queue_dispose(ecds_queue_t * queue);
 
-ecds_object_t * ecds_queue_enqueue_item(ecds_queue_t * queue, ecds_object_t * obj);
-
-ecds_object_t * ecds_queue_dequeue_item(ecds_queue_t * queue);
-ecds_object_t * ecds_queue_peek(ecds_queue_t * queue);
-
+ecds_list_item_t * ecds_queue_enqueue_item(ecds_queue_t * queue, ecds_list_item_t * item);
+ecds_list_item_t * ecds_queue_dequeue_item(ecds_queue_t * queue);
+ecds_list_item_t * ecds_queue_peek(ecds_queue_t * queue);
 void ecds_queue_flush(ecds_queue_t * queue, void (* flush_func)(ecds_object_t * obj));
 
 #endif /* _ECDS_QUEUE_H */

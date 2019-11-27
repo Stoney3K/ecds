@@ -1,0 +1,5 @@
+#pragma once
+
+#define ECDS_VERSION_MAJOR 0
+#define ECDS_VERSION_MINOR 1
+#define ECDS_VERSION_BUILD 191010

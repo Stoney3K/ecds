@@ -18,8 +18,7 @@
 #ifndef _ECDS_LIST_H
 #define _ECDS_LIST_H
 
-typedef struct _ecds_list_t * ecds_list_t;
-typedef struct _ecds_list_item_t * ecds_list_item_t;
+#include <ecds.h>
 
 /**
  * @brief Create a new list containing no items.
@@ -108,7 +107,6 @@ ecds_list_item_t * ecds_list_drop_item(ecds_list_item_t * item);
 
 /**
  * @brief Dispose a list item.
- * @param list The list to remove an item from.
  * @param item The list item to delete.
  * @return The contained object if removal was succesful. NULL otherwise.
  */
@@ -128,7 +126,16 @@ ecds_list_item_t * ecds_list_find_item(ecds_list_t * list, ecds_object_t * obj);
  * @param index The integer index of the object you want.
  * @return The ecds_object_t that was requested, or NULL if it was not found.
  */
-ecds_object_t * ecds_fetch_item(ecds_list_t * list, int index);
+ecds_list_item_t * ecds_fetch_item(ecds_list_t * list, int index);
+
+/**
+* @brief Get the object contained in a list item.
+* @param list The list to act on.
+* @param item The list item to fetch.
+* @return The ecds_object_t that was requested, or NULL if it was not found.
+*/
+ecds_object_t * ecds_list_get_item(ecds_list_t * list, ecds_list_item_t * item);
+
 
 /**
  * @brief Convert a list into an array.
@@ -216,7 +223,6 @@ void ecds_list_sort(ecds_list_t * list, bool (* compare_func)(ecds_object_t * a,
  * @return A merged list with the items of both lists merged together.
  */
 ecds_list_t * ecds_list_sublist(ecds_list_t * list, unsigned int from, unsigned int to);
-
 
 ecds_object_t * ecds_list_construct_object();
 void ecds_list_dispose_object(ecds_object_t * obj);

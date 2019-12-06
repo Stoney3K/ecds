@@ -11,7 +11,9 @@
 
 struct _ecds_process_t {
 	ecds_object_t obj;
-			
+
+	ecds_object_t* private_data;
+
 	//!< Called when the process is first started up.
 	void (* initialize)(ecds_process_t * proc);
 	

@@ -11,7 +11,6 @@
 #ifndef _ECDS_H
 #define _ECDS_H
 
-
 #ifdef WIN32
 #include <stdlib.h>
 #include <stdint.h>

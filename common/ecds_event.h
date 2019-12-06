@@ -14,7 +14,7 @@
 #ifndef _ECDS_EVENT_H
 #define _ECDS_EVENT_H
 
-#include <common/ecds_object.h>
+#include <core/ecds_object.h>
 
 #define EVENT(e) ((ecds_event_t *)e)
 
@@ -24,10 +24,10 @@ struct _ecds_event_t
 {
 	ecds_object_t obj;
 
-	ecds_object_t * sender;	//!<	Pointer to object that sent the event (NULL if anyonymous)
+	ecds_object_t* sender;	//!<	Pointer to object that sent the event (NULL if anyonymous)
 	uint32_t event_type;	//!<	Identifier which sets the type of event
-	
-	void * user_data;		//!<	Pointer to user data to pass to event handler
-}
+
+	void* user_data;		//!<	Pointer to user data to pass to event handler
+};
 
 #endif /* _ECDS_EVENT_H */

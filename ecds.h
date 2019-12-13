@@ -47,7 +47,10 @@ typedef struct _ecds_memory_manager_t ecds_memory_manager_t;
 * @param type The integer type identifier to use for this object.
 * @return A pointer to the new object, or NULL if the construction failed.
 */
-ecds_object_t * ecds_object_new(const char * name, size_t size, uint32_t type);
+ecds_object_t * ecds_object_new(
+					const char * name, 
+					size_t size, 
+					uint32_t type);
 
 /**
 * @brief Construct a new object of a given class and take a reference on it.
@@ -58,6 +61,15 @@ ecds_object_t * ecds_object_new(const char * name, size_t size, uint32_t type);
 ecds_object_t * ecds_object_construct(
 					const char * type_name, 
 					const char * object_name);
+
+/**
+* @brief Modify the name of an object.
+* @param target The object to manipulate.
+* @param new_name The new name for the object.
+*/
+void ecds_object_rename(
+	ecds_object_t * target,
+	const char * new_name);
 
 //!< @brief Take an additional reference on an object.
 void ecds_object_ref(ecds_object_t * obj);

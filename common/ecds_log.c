@@ -4,7 +4,6 @@
 #include <stdarg.h>
 
 #include <ecds.h>
-
 #define ECDS_LOG_DOMAIN "ecds-log"
 
 int ecds_log_current_level = ECDS_INFO;

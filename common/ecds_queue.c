@@ -18,6 +18,11 @@ void ecds_queue_dispose(ecds_queue_t * queue)
 	ecds_list_dispose((ecds_list_t *)queue);
 }
 
+ecds_list_item_t * ecds_queue_enqueue(ecds_queue_t * queue, ecds_object_t * obj)
+{
+	return ecds_list_add_item((ecds_list_t *)queue, obj);
+}
+
 ecds_list_item_t * ecds_queue_enqueue_item(ecds_queue_t * queue, ecds_list_item_t * item)
 {
 	return ecds_list_take_item((ecds_list_t *)queue, item);
@@ -37,7 +42,7 @@ ecds_list_item_t * ecds_queue_dequeue_item(ecds_queue_t * queue)
 	if (first)
 	{
 		ecds_list_drop_item(first);
-		_ecds_list_reorder((ecds_list_t *)queue);
+		//	_ecds_list_reorder((ecds_list_t *)queue);
 	}
 
 	return first;

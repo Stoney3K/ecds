@@ -31,6 +31,8 @@
 #define _ECDS_SERVICE_H
 
 #include <ecds.h>
+
+#include <core/ecds_object.h>
 #include <core/ecds_dispatcher.h>
 
 #define ECDS_IS_SERVICE 0x20000000
@@ -59,16 +61,10 @@ void ecds_service_dispatch_message(ecds_service_t * service, ecds_dispatcher_t *
 /**
  * @brief Registers a new handler into a service.
  * @param service The service to modify.
- * @param event_type One of the ECDS_EVENT constants for event bus types, or a user-defined bus number.
+ * @param event_id One of the ECDS_EVENT constants for event bus types, or a user-defined bus number.
  * @user_function A pointer to the handler function which performs an action on this event type.
  */
-void ecds_service_add_handler(ecds_service_t * service, uint32_t event_type, ecds_handler_func user_function);
-
-struct _ecds_service_handler_t {
-	ecds_object_t obj;
-	uint32_t event_id;
-	ecds_handler_func user_function;
-};
+void ecds_service_add_handler(ecds_service_t * service, uint32_t event_id, ecds_handler_func user_function);
 
 struct _ecds_service_t
 {

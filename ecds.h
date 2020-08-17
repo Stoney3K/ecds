@@ -26,6 +26,7 @@
 #define ECDS_OBJECT(o) ( ((o) == NULL) ? NULL : (ecds_object_t *)((o)) )
 #define ECDS_PROCESS(o) ( ((o) == NULL) ? NULL : (ecds_process_t *)((o)) )
 #define ECDS_SERVICE(o) ( ((o) == NULL) ? NULL : (ecds_service_t *)((o)) )
+#define ECDS_LIST(o) ( ((o) == NULL) ? NULL : (ecds_list_t *)((o)) )
 
 typedef struct _ecds_message_t ecds_message_t;
 typedef struct _ecds_service_t ecds_service_t;
@@ -77,6 +78,9 @@ void ecds_object_ref(ecds_object_t * obj);
 //!< @brief Decrease reference on an object and dispose it if necessary.
 void ecds_object_unref(ecds_object_t * obj);
 
+//!< @brief Get the canonical name of an object.
+char * ecds_object_get_name(ecds_object_t * obj);
+
 /**
 * @brief Register a new class.
 * @param type_name The type name to use.
@@ -107,7 +111,7 @@ void ecds_enumerate_modules(const char * path);
 //===========================================================================//
 /**
 * @brief Register a new event handler
-* @param event_type The integer event type to register. When the type is already registered,
+* @param event_id The integer event type to register. When the type is already registered,
 *		  the service will be added to the subscriptions.
 * @param service The service to attach to the global dispatcher.
 */

@@ -213,6 +213,22 @@ ecds_object_t * ecds_object_new(const char * name, size_t size, uint32_t type)
 	return ret;
 }
 
+char * ecds_object_get_name(ecds_object_t * obj)
+{
+	if (obj == NULL)
+		return NULL;
+
+	return _strdup(obj->name);
+}
+
+void ecds_object_rename(ecds_object_t * obj, const char * new_name)
+{
+	if (obj == NULL)
+		return;
+
+	obj->name = _strdup(new_name);
+}
+
 //!< Find the UID of an object in the memory manager's memory.
 uint32_t ecds_memory_manager_find_object(ecds_memory_manager_t * mgr, const char * object_name);
 

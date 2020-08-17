@@ -20,6 +20,7 @@ ecds_queue_t * ecds_queue_new();
 
 void ecds_queue_dispose(ecds_queue_t * queue);
 
+ecds_list_item_t * ecds_queue_enqueue(ecds_queue_t * queue, ecds_object_t * obj);
 ecds_list_item_t * ecds_queue_enqueue_item(ecds_queue_t * queue, ecds_list_item_t * item);
 ecds_list_item_t * ecds_queue_dequeue_item(ecds_queue_t * queue);
 ecds_list_item_t * ecds_queue_peek(ecds_queue_t * queue);

@@ -9,6 +9,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <conio.h>
 #include <ecds.h>
 
 #include <common/ecds_test_class.h>
@@ -27,7 +28,7 @@ int main(int argc, char** argv)
 	ecds_object_unref(ECDS_OBJECT(ret));
 
 	ecds_log_info("Press any key to exit.");
-	getch();
+	_getch();
 
 	return EXIT_SUCCESS;
 }

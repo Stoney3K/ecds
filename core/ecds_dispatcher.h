@@ -9,6 +9,8 @@
 
 #include <ecds.h>
 
+#include <core/ecds_object.h>
+
 #define ECDS_DISPATCHER 0xFFFFFFFA
 #define ECDS_DISPATCHER_EVENT 0xFFFFFFAA
 typedef struct _ecds_dispatcher_t ecds_dispatcher_t;
@@ -21,7 +23,7 @@ ecds_dispatcher_t * ecds_dispatcher_construct(const char * name);
  * @param event_id The event type ID (virtual bus number) of the event to subscribe to.
  * @param service The service to attach to the dispatcher.
  */
-void ecds_dispatcher_subscribe(ecds_dispatcher_t * disp, unsigned int event_type, ecds_service_t * service);
+void ecds_dispatcher_subscribe(ecds_dispatcher_t * disp, unsigned int event_id, ecds_service_t * service);
 
 /**
 * @brief Attach a subscription to the dispatcher for a specific event class.
@@ -34,7 +36,7 @@ void ecds_dispatcher_queue_message(ecds_dispatcher_t * disp, ecds_message_t * ms
 struct _ecds_message_t {
 	ecds_object_t obj;
 
-	uint32_t event_type;
+	uint32_t event_id;
 	uint16_t user_data_length;
 	void * user_data;
 };

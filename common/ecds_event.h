@@ -25,7 +25,7 @@ struct _ecds_event_t
 	ecds_object_t obj;
 
 	ecds_object_t* sender;	//!<	Pointer to object that sent the event (NULL if anyonymous)
-	uint32_t event_type;	//!<	Identifier which sets the type of event
+	uint32_t event_id;	//!<	Identifier which sets the type of event
 
 	void* user_data;		//!<	Pointer to user data to pass to event handler
 };

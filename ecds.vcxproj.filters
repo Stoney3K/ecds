@@ -54,6 +54,9 @@
     <ClCompile Include="core\ecds_dispatcher.c">
       <Filter>Source Files\core</Filter>
     </ClCompile>
+    <ClCompile Include="ecds_service.c">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ecds.h">

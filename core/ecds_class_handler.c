@@ -28,7 +28,7 @@ struct _ecds_class_handler_entry_t {
 
 	uint32_t class_uid;
 	char * class_name;
-	ecds_object_t * (* constructor)();
+	ecds_object_t * (* constructor)(const char * object_name);
 };
 
 struct _ecds_class_handler_t {
@@ -54,7 +54,7 @@ ecds_class_handler_t * ecds_class_handler_get_default()
 uint32_t ecds_register_class(
 	const char * type_name,
 	uint32_t type_uid,
-	ecds_object_t * (*construct)())
+	ecds_object_t * (*construct)(const char * object_name))
 {
 	char class_entry_name[120];
 	ecds_list_item_t * item = NULL;
@@ -111,16 +111,19 @@ ecds_object_t * ecds_object_construct(const char * type_name, const char * objec
 	ecds_class_handler_t * class_handler = ecds_class_handler_get_default();
 	ecds_object_t * ret = NULL;
 
-	/* Search if the class is already registered first */
 	for (item = ecds_list_first_item(class_handler->classes); item; item = ecds_list_next_item(item))
 	{
 		entry = (ecds_class_handler_entry_t *)ecds_list_get_item(class_handler->classes, item);
 		if (strcmp(type_name, entry->class_name) == 0)
 		{
-			/* Bingo! */
-			ret = entry->constructor();
-			if (object_name != NULL)
-				ret->name = _strdup(object_name);
+			if (object_name == NULL)
+			{
+				char temp_name[128];
+				sprintf_s(temp_name, 128, "%s-obj", type_name);
+				ret = entry->constructor(temp_name);
+			}
+			else
+				ret = entry->constructor(object_name);
 
 			return ret;
 		}

@@ -1,4 +1,4 @@
-#include <common/ecds_test_class.h>
+#include "ecds_test_class.h"
 
 #include <core/ecds_object.h>
 #include <core/ecds_memory_manager.h>

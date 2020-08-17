@@ -28,6 +28,12 @@
     <Filter Include="Source Files\modules">
       <UniqueIdentifier>{a84c5724-7178-4ab6-86c1-7d7635d08aee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\tests">
+      <UniqueIdentifier>{a892d5f5-0c54-46cf-80b5-88a12247ba36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\tests">
+      <UniqueIdentifier>{9c939d28-a317-4c1a-96b4-53193124593b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\ecds_launcher.c">
@@ -42,20 +48,20 @@
     <ClCompile Include="core\ecds_memory_manager.c">
       <Filter>Source Files\core</Filter>
     </ClCompile>
-    <ClCompile Include="core\ecds_class_handler.c">
-      <Filter>Header Files\core</Filter>
-    </ClCompile>
-    <ClCompile Include="common\ecds_test_class.c">
-      <Filter>Source Files\common</Filter>
-    </ClCompile>
     <ClCompile Include="common\ecds_queue.c">
       <Filter>Source Files\common</Filter>
     </ClCompile>
     <ClCompile Include="core\ecds_dispatcher.c">
       <Filter>Source Files\core</Filter>
     </ClCompile>
-    <ClCompile Include="ecds_service.c">
+    <ClCompile Include="core\ecds_service.c">
       <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ecds_class_handler.c">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\ecds_test_class.c">
+      <Filter>Source Files\tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -101,11 +107,11 @@
     <ClInclude Include="core\ecds_process.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
-    <ClInclude Include="common\ecds_test_class.h">
-      <Filter>Header Files\common</Filter>
-    </ClInclude>
     <ClInclude Include="core\ecds_list_internal.h">
       <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="common\ecds_test_class.h">
+      <Filter>Header Files\tests</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -19,7 +19,7 @@ ecds_dispatcher_t * ecds_dispatcher_construct(const char * name);
 
 /**
  * @brief Attach a subscription to the dispatcher for a specific event class.
- * @param disp The dispatcher to manipulate.
+ * @param disp The dispatcher to manipulate. When NULL is passed, the default dispatcher is used.
  * @param event_id The event type ID (virtual bus number) of the event to subscribe to.
  * @param service The service to attach to the dispatcher.
  */

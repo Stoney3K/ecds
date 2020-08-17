@@ -10,7 +10,7 @@
 
 #include <ecds.h>
 
-#define ECDS_TYPE_TEST	0x0FFFFFFF
+#define ECDS_TYPE_TEST			0x0FFFFFFF
 
 typedef struct _ecds_test_class_t ecds_test_class_t;
 

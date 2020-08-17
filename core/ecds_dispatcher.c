@@ -12,6 +12,8 @@
 #include <core/ecds_process.h>
 #include <core/ecds_dispatcher.h>
 
+static ecds_dispatcher_t * default_dispatcher = NULL;
+
 void ecds_dispatcher_dispatch_message(ecds_dispatcher_t * disp, ecds_message_t * msg);
 
 typedef struct _ecds_dispatcher_event_t ecds_dispatcher_event_t;

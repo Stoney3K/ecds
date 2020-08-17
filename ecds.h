@@ -91,7 +91,7 @@ char * ecds_object_get_name(ecds_object_t * obj);
 uint32_t ecds_register_class(
 			const char * type_name,
 			uint32_t type_uid,
-			ecds_object_t * (*construct)());
+			ecds_object_t * (*construct)(const char * object_name));
 
 //=================================== 8< ====================================//
 //						 MODULE LOADING AND UNLOADING						 //
@@ -110,12 +110,12 @@ void ecds_enumerate_modules(const char * path);
 //							 MESSAGE BUS CONNECTION							 //
 //===========================================================================//
 /**
-* @brief Register a new event handler
-* @param event_id The integer event type to register. When the type is already registered,
-*		  the service will be added to the subscriptions.
-* @param service The service to attach to the global dispatcher.
+* @brief Attach a subscription to the global dispatcher for a specific event class.
+* @param event_id The event type ID (virtual bus number) of the event to subscribe to.
+* @param service The service to attach to the dispatcher.
 */
-void ecds_message_bus_attach(unsigned int bus_number, ecds_service_t * service);
+void ecds_subscribe(unsigned int event_id, ecds_service_t * service);
+
 
 /**
 * @brief Post a new event to the global dispatcher.

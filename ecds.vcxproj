@@ -114,12 +114,12 @@
     <ClCompile Include="common\ecds_list.c" />
     <ClCompile Include="common\ecds_log.c" />
     <ClCompile Include="common\ecds_queue.c" />
-    <ClCompile Include="common\ecds_test_class.c" />
     <ClCompile Include="core\ecds_class_handler.c" />
     <ClCompile Include="core\ecds_dispatcher.c" />
     <ClCompile Include="core\ecds_launcher.c" />
     <ClCompile Include="core\ecds_memory_manager.c" />
-    <ClCompile Include="ecds_service.c" />
+    <ClCompile Include="core\ecds_service.c" />
+    <ClCompile Include="tests\ecds_test_class.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\ecds_list_internal.h" />

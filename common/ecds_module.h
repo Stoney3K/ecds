@@ -8,6 +8,7 @@
 
 #include <core/ecds_object.h>
 
+typedef ecds_module_t * (* ecds_module_constructor_t)();
 typedef struct _ecds_module_t ecds_module_t;
 
 struct _ecds_module_t {

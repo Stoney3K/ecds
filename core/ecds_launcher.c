@@ -9,9 +9,10 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <conio.h>
 #include <ecds.h>
-
+#ifdef WIN32
+	#include <conio.h>
+#endif
 #include <tests/ecds_test_class.h>
 #include <core/ecds_dispatcher.h>
 
@@ -28,14 +29,13 @@ int main(int argc, char** argv)
 	ecds_register_class("ecds-dispatcher-class", ECDS_DISPATCHER, ecds_dispatcher_construct);
 	disp = (ecds_dispatcher_t *)ecds_object_construct("ecds-dispatcher-class", "dispatcher-default");
 
-	ecds_register_class("ecds-test-class", ECDS_TYPE_TEST, ecds_test_class_construct);
-	ret = (ecds_test_class_t *)ecds_object_construct("ecds-test-class", NULL);
+	//	ecds_register_class("ecds-test-class", ECDS_TYPE_TEST, ecds_test_class_construct);
+	//	ret = (ecds_test_class_t *)ecds_object_construct("ecds-test-class", NULL);
 
 
 	ecds_object_unref(ECDS_OBJECT(ret));
-
-	ecds_log_info("Press any key to exit.");
-	_getch();
+	
+	ecds_log_info("Program completed.");
 
 	return EXIT_SUCCESS;
 }

@@ -70,10 +70,10 @@ uint32_t ecds_register_class(
 			return entry->class_uid;
 	}
 
-	sprintf_s(class_entry_name, 120, "class_entry_%s", type_name);
+	sprintf(class_entry_name, "class_entry_%s", type_name);
 	entry = (ecds_class_handler_entry_t *)ecds_object_new(class_entry_name, sizeof(ecds_class_handler_entry_t), ECDS_TYPE_CLASS_HANDLER_ENTRY);
 
-	entry->class_name = _strdup(type_name);
+	entry->class_name = strdup(type_name);
 	if (type_uid == 0)
 		entry->class_uid = (uint32_t)rand() & 0x00FFFFFF;
 	else
@@ -119,7 +119,7 @@ ecds_object_t * ecds_object_construct(const char * type_name, const char * objec
 			if (object_name == NULL)
 			{
 				char temp_name[128];
-				sprintf_s(temp_name, 128, "%s-obj", type_name);
+				sprintf(temp_name, "%s-obj", type_name);
 				ret = entry->constructor(temp_name);
 			}
 			else

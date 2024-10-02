@@ -88,18 +88,18 @@ static void _dispatcher_dispose(ecds_dispatcher_t * disp)
 
 }
 
-ecds_dispatcher_t * ecds_dispatcher_construct(const char * name) 
+ecds_object_t * ecds_dispatcher_construct(const char * name) 
 {
 	char queue_name[80];
 	ecds_dispatcher_t * ret = (ecds_dispatcher_t *)ecds_object_new(name, sizeof(ecds_dispatcher_t), ECDS_DISPATCHER);
 
-	sprintf_s(queue_name, 80, "%s-queue", name);
+	sprintf(queue_name, "%s-queue", name);
 	ret->message_queue = ecds_queue_new();
 	ecds_object_rename(ECDS_OBJECT(ret->message_queue), queue_name);
 
 	ecds_log_info("Constructing new dispatcher: %s", ecds_object_get_name(ECDS_OBJECT(ret)));
 
-	return ret;
+	return (ecds_object_t *)ret;
 }
 
 void ecds_dispatcher_queue_message(ecds_dispatcher_t * disp, ecds_message_t * msg) 
@@ -126,7 +126,7 @@ void ecds_dispatcher_subscribe(ecds_dispatcher_t * disp,
 
 	/* Event type was not found, add new */
 	char event_name[128];
-	sprintf_s(event_name, 128, "%s-event-%8X", ecds_object_get_name(ECDS_OBJECT(disp)), event_id);
+	sprintf(event_name, "%s-event-%8X", ecds_object_get_name(ECDS_OBJECT(disp)), event_id);
 
 	ecds_log_info("Adding new event ID %08X", event_id);
 	ecds_dispatcher_event_t * evt = (ecds_dispatcher_event_t *)ecds_object_new(event_name, sizeof(ecds_dispatcher_event_t), ECDS_DISPATCHER_EVENT);
@@ -153,7 +153,7 @@ void ecds_dispatcher_dispatch_message(ecds_dispatcher_t * disp, ecds_message_t *
 	{
 		/* No handlers found, register new event type only */
 		char event_name[128];
-		sprintf_s(event_name, 128, "%s-event-%8X", ecds_object_get_name(ECDS_OBJECT(disp)), msg->event_id);
+		sprintf(event_name, "%s-event-%8X", ecds_object_get_name(ECDS_OBJECT(disp)), msg->event_id);
 
 		ecds_log_info("Received message with unknown event ID %08X, registering for future dispatch", msg->event_id);
 		ecds_dispatcher_event_t * evt = (ecds_dispatcher_event_t *)ecds_object_new(event_name, sizeof(ecds_dispatcher_event_t), ECDS_DISPATCHER_EVENT);

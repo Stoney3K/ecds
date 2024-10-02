@@ -15,7 +15,7 @@
 #define ECDS_DISPATCHER_EVENT 0xFFFFFFAA
 typedef struct _ecds_dispatcher_t ecds_dispatcher_t;
 
-ecds_dispatcher_t * ecds_dispatcher_construct(const char * name);
+ecds_object_t * ecds_dispatcher_construct(const char * name);
 
 /**
  * @brief Attach a subscription to the dispatcher for a specific event class.

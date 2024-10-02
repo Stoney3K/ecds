@@ -7,9 +7,13 @@
 #ifdef WIN32
 	#include <windows.h>
 #else
+	#include <dlfcn.h>
 #endif
+#define ECDS_LOG_DOMAIN "ecds-module-manager"
 #include <ecds.h>
 #include <common/ecds_module.h>
+#include <core/ecds_module_manager.h>
+
 
 /**
  * @brief Loads a module from disk and registers it.
@@ -20,7 +24,7 @@ void ecds_load_module(const char * path)
 
 	if (!module_manager)
 	{
-		ecds_warn("Unable to load module from %s: No module manager available", path);
+		ecds_log_warning("Unable to load module from %s: No module manager available", path);
 		return;
 	}
 
@@ -41,7 +45,7 @@ void ecds_load_module(const char * path)
 		ecds_log(ECDS_WARN, "Unable to load module from %s", path);
 		return;
 	}
-	ecds_module_constructor_t * ecds_module_construct = (ecds_module_constructor_t *)dlsym(dl_handle, "ecds_module_construct");
+	ecds_module_constructor_t ecds_module_construct = (ecds_module_constructor_t)dlsym(dl_handle, "ecds_module_construct");
 #endif
 	if(!ecds_module_construct)
 	{
@@ -57,7 +61,7 @@ void ecds_load_module(const char * path)
 	}	
 		
 	module->library_handle = dl_handle;
-	ecds_module_manager_register_module(module);
+	ecds_module_manager_register_module(module_manager, module);
 }
 
 /**

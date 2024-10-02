@@ -11,11 +11,10 @@
 #ifndef _ECDS_H
 #define _ECDS_H
 
-#ifdef WIN32
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
-#endif
+#include <stdarg.h>
 
 #include <common/ecds_version.h>
 #include <common/ecds_log.h>

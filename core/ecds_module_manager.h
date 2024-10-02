@@ -16,7 +16,6 @@
 #include <ecds.h>
 #include <core/ecds_object.h>
 
-typedef struct _ecds_module_t * ecds_module_t;
 typedef struct _ecds_module_manager_t * ecds_module_manager_t;
 
 typedef enum

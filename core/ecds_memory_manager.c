@@ -83,7 +83,7 @@ ecds_memory_manager_t * _memory_manager_create_default()
 		ecds_log_fatal("Cannot create default memory manager");
 	}
 	
-	ret->process.obj.name = _strdup("memory-manager-default");
+	ret->process.obj.name = strdup("memory-manager-default");
 	default_memory_manager = ret;
 
 	_memory_manager_init((ecds_object_t *)ret);
@@ -134,7 +134,7 @@ void ecds_object_ref(ecds_object_t * obj)
 	if(!obj->name)
 	{
 		obj->name = malloc(16);
-		sprintf_s(obj->name, 16, "object-%8X", entry->uid);
+		sprintf(obj->name, "object-%8X", entry->uid);
 	}
 	
 	ecds_log_debug("Object %s added to memory manager", obj->name, entry->refcnt);
@@ -202,7 +202,7 @@ ecds_object_t * ecds_object_new(const char * name, size_t size, uint32_t type)
 	}
 
 	if (name != 0)
-		ret->name = _strdup(name);
+		ret->name = strdup(name);
 
 	if (type != 0)
 		ret->type_uid = type;
@@ -218,7 +218,7 @@ char * ecds_object_get_name(ecds_object_t * obj)
 	if (obj == NULL)
 		return NULL;
 
-	return _strdup(obj->name);
+	return strdup(obj->name);
 }
 
 void ecds_object_rename(ecds_object_t * obj, const char * new_name)
@@ -226,7 +226,7 @@ void ecds_object_rename(ecds_object_t * obj, const char * new_name)
 	if (obj == NULL)
 		return;
 
-	obj->name = _strdup(new_name);
+	obj->name = strdup(new_name);
 }
 
 //!< Find the UID of an object in the memory manager's memory.
